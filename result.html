@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizUp! - Результат</title>
+    <style>
+        body {
+           body {
+    font-family: sans-serif;
+    background-image: url('result.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+}
+        .results-container {
+            background-color: rgba(230, 224, 255, 0.8); /* Лавандовый с небольшой прозрачностью */
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .results-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #7c3aed;
+            margin-bottom: 20px;
+        }
+        .result-text {
+            font-size: 1.2em;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        .final-score {
+            font-weight: bold;
+            color: #68d391; /* Зеленый для правильных ответов */
+        }
+        .total-questions {
+            font-weight: bold;
+        }
+        .final-time {
+            font-weight: bold;
+        }
+        .new-game-button {
+            background-color: #60a5fa;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .new-game-button:hover {
+            background-color: #4381c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <div class="results-title">РЕЗУЛЬТАТ</div>
+        <p class="result-text">Ваш счет: <span class="final-score" id="final-score"></span> из <span class="total-questions" id="total-questions"></span> вопросов.</p>
+        <p class="result-text">Время прохождения: <span class="final-time" id="total-time"></span></p>
+        <button class="new-game-button" onclick="window.location.href='2.html'">Новая игра</button>
+        <button class="new-game-button" onclick="location.reload()">Пройти заново</button>
+        <button class="new-game-button" onclick="location.href='level.html'">Выбрать другой уровень</button>
+        <button class="new-game-button" onclick="location.href='2.html'">Выбрать другой предмет</button>
+    </div>
+
+    <script>
+        const finalScoreElement = document.getElementById('final-score');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const totalTimeElement = document.getElementById('total-time');
+
+        const finalScore = localStorage.getItem('finalScore');
+        const totalQuestions = localStorage.getItem('totalQuestions');
+        const totalTime = localStorage.getItem('totalTime');
+
+        function formatTime(milliseconds) {
+            const totalSeconds = Math.floor(milliseconds / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        if (finalScoreElement && totalQuestionsElement && totalTimeElement) {
+            finalScoreElement.textContent = finalScore;
+            totalQuestionsElement.textContent = totalQuestions;
+            totalTimeElement.textContent = formatTime(parseInt(totalTime));
+        }
+    </script>
+</body>
+</html>

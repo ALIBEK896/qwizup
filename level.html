@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizUp! - Выбор уровня</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #e6e0ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .header {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #7c3aed;
+            margin-bottom: 30px;
+        }
+        .levels-container {
+            display: flex;
+            gap: 20px;
+        }
+        .level-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .level-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        .level-description {
+            color: #718096;
+            font-size: 0.9em;
+        }
+        .level-card:hover {
+            background-color: #f7fafc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">ВЫБОР УРОВНЯ</div>
+    <div class="levels-container">
+        <div class="level-card" data-level="easy">
+            <div class="level-title">Легкий</div>
+            <div class="level-description">Простые вопросы.</div>
+        </div>
+        <div class="level-card" data-level="medium">
+            <div class="level-title">Средний</div>
+            <div class="level-description">Вопросы средней сложности.</div>
+        </div>
+        <div class="level-card" data-level="hard">
+            <div class="level-title">Сложный</div>
+            <div class="level-description">Сложные вопросы.</div>
+        </div>
+    </div>
+
+    <script>
+const levelCards = document.querySelectorAll('.level-card');
+
+levelCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const englishLevel = card.dataset.level;
+        let russianLevel;
+
+        if (englishLevel === 'easy') {
+            russianLevel = 'легкий';
+        } else if (englishLevel === 'medium') {
+            russianLevel = 'средний';
+        } else if (englishLevel === 'hard') {
+            russianLevel = 'сложный';
+        }
+
+        if (russianLevel) {
+            localStorage.setItem('selectedLevel', russianLevel);
+            window.location.href = 'quiz.html';
+        }
+    });
+});    </script>
+</body>
+</html>

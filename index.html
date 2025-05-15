@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizUp!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #e6e0ff; /* Цвет фона по умолчанию, будет перекрыт изображением */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+     background-image: url('main.png');
+    background-size: contain; /* Масштабировать, чтобы полностью поместилось */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+        .start-button-container {
+            text-align: center; /* Центрирование кнопки */
+        }
+        .start-button {
+            background-color: #a78bfa; /* Фиолетовый цвет кнопки */
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Небольшая тень */
+            transition: transform 0.2s ease-in-out; /* Плавная анимация */
+        }
+        .start-button:hover {
+            transform: translateY(-5px); /* Сдвиг вверх при наведении */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Усиление тени при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div class="start-button-container">
+        <a href="2.html" style="text-decoration: none;">
+            <button class="start-button">НАЧАТЬ ИГРУ</button>
+        </a>
+    </div>
+
+    <script>
+        // Простой JavaScript для эффекта "нажатия" кнопки
+        const startButton = document.querySelector('.start-button');
+
+        if (startButton) {
+            startButton.addEventListener('mousedown', () => {
+                startButton.style.transform = 'translateY(2px)';
+                startButton.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+            });
+
+            startButton.addEventListener('mouseup', () => {
+                startButton.style.transform = 'translateY(-5px)';
+                startButton.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
+            });
+
+            startButton.addEventListener('mouseout', () => {
+                startButton.style.transform = 'translateY(0)';
+                startButton.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            });
+        }
+    </script>
+</body>
+</html>
