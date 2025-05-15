@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizUp! - Выбор предмета</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #e6e0ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .header {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #7c3aed;
+            margin-bottom: 30px;
+        }
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        .subject-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .subject-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        .subject-description {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .select-button {
+    background-color: #7c3aed; /* Фиолетовый цвет фона */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Добавим плавный переход цвета */
+}
+
+.select-button:hover {
+    background-color: #6329c2; /* Более темный фиолетовый при наведении */
+}
+    </style>
+</head>
+<body>
+    <div class="header">ВЫБОР ПРЕДМЕТА</div>
+    <div class="subjects-grid">
+        <div class="subject-card" data-subject="математика">
+            <div class="subject-title">Математика</div>
+            <div class="subject-description">Тесты по алгебре и геометрии — от базовых примеров до олимпиадных задач.</div>
+            <button class="select-button">Выбрать</button>
+        </div>
+        <div class="subject-card" data-subject="география">
+            <div class="subject-title">География</div>
+            <div class="subject-description">Проверь знания материков, стран и климатических поясов.</div>
+            <button class="select-button">Выбрать</button>
+        </div>
+        <div class="subject-card" data-subject="история">
+            <div class="subject-title">История</div>
+            <div class="subject-description">События, личности и эпохи — от древнего мира до новейшей истории.</div>
+            <button class="select-button">Выбрать</button>
+        </div>
+        <div class="subject-card" data-subject="информатика">
+            <div class="subject-title">Информатика</div>
+            <div class="subject-description">Тесты по основам программирования, алгоритмам и компьютерной грамотности.</div>
+            <button class="select-button">Выбрать</button>
+        </div>
+    </div>
+
+    <script>
+      const subjectCards = document.querySelectorAll('.subject-card');
+
+subjectCards.forEach(card => {
+    const selectButton = card.querySelector('.select-button'); // Убедитесь, что у вас есть кнопка внутри карточки
+    const subject = card.dataset.subject;
+
+    selectButton.addEventListener('click', () => {
+        localStorage.setItem('selectedSubject', subject);
+        window.location.href = 'level.html';
+    });
+});
+    </script>
+</body>
+</html>
